@@ -1,21 +1,33 @@
 import { useEffect } from "react";
+import { useNavigate} from "react-router-dom";
 import styles from './CardSearch.module.css';
 import { TextField } from "@mui/material";
 import { useForm } from "react-hook-form";
 import { useMiSaludStore } from "../../../zustand/miSaludStore.js";
 import iconAdministracion from "../../../assets/images/administracion.png";
 export default function CardSearch() {
+  const navigate = useNavigate();
   const setCardTitle = useMiSaludStore((state) => state.setCardTitle);
   const {
     register,
     handleSubmit,
     formState: { errors },
-    setValue,
-    watch,
   } = useForm();
 
-  const onSubmit = (data) => {
-    console.log("Form data:", data);
+  const onSubmit = async (data) => {
+    try {
+      const response = await fetch("http://localhost:5256/api/Patient/GetPatientByCedula/" + data.cc);
+      const result = await response.json();
+      if (!response.ok) {
+        alert("Alerta: "+result.message);
+        return;
+      } 
+      console.log("Paciente encontrado:", result.data);
+      navigate(`/InfoPatient/${data.cc}`);
+    }catch (errors) {
+      console.error("Error fetching data:", errors.message);
+    }
+
   }
 
   useEffect(() => {
@@ -30,7 +42,7 @@ export default function CardSearch() {
   }, []);
 
   return (
-    <form className={styles["card__search"]} onSubmit={handleSubmit(onSubmit)} >
+    <form className={styles["card__search"]} onSubmit={ handleSubmit(onSubmit)} >
       <div className={styles["card__search--container"]}>
         <p className={styles["serch__container--title"]}>Digite la Cedula</p>
           <TextField

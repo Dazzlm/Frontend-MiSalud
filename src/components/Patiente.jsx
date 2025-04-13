@@ -14,7 +14,7 @@ export default function CreatePatient() {
         bgColor: "white",
       },
     });
-  }, [setCardTitle]);
-
+  }, []);
+  
   return <p>Componente de crear paciente</p>;
 }

@@ -4,6 +4,8 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import MainLayout from "./views/menu/MainLayout";
 import CardGroupButton from "./components/cards/card-group-button/CardGroupButton";
 import CreatePatient from "./components/Patiente";
+import CardSearch from "./components/cards/card-search/CardSearch";
+import InfoPatient from './components/info-patient/InfoPatient';
 function App() {
   
   return (
@@ -12,8 +14,9 @@ function App() {
         <Route path="/" element={<MainLayout />}>
           <Route index element={<CardGroupButton />} />
           <Route path="/CreateNotification" element={<p>Test New Notification</p>} />
-          <Route path="/ManageAgenda" element={<p>Test manage agenda</p>} />
+          <Route path="/ManageAgenda" element={<CardSearch/>} />
           <Route path="/CreatePatient" element={<CreatePatient/>}/>
+          <Route path="/InfoPatient/:cc"  element={<InfoPatient/>}/>
         </Route>
       </Routes>
     </BrowserRouter>
