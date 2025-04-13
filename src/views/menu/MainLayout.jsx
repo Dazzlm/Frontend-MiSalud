@@ -25,7 +25,7 @@ export default function MainLayout() {
         },
       });
     }
-  }, [path, setCardTitle]);
+  }, [path]);
   return (
     <>
       <CurrentUser />
