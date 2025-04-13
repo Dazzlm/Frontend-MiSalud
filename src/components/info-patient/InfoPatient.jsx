@@ -25,11 +25,14 @@ export default function InfoPatient() {
 
         if (data === null) {
             Swal.fire({
-                icon: 'error',
-                title: 'Oops...',
                 text: 'Paciente no encontrado!',
-                confirmButtonText: 'Aceptar',
+                confirmButtonText: '✔',
                 confirmButtonColor: '#28BBC9',
+                customClass: {
+                    text: styles["swal__text"],
+                    popup: styles["swal__style"],
+                    confirmButton: styles['button__confirmar'],
+                }
             });
             setPatient(undefined);
             navigate("/ManageAgenda");
