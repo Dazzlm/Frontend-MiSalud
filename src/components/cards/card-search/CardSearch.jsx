@@ -5,6 +5,7 @@ import { TextField } from "@mui/material";
 import { useForm } from "react-hook-form";
 import { useMiSaludStore } from "../../../zustand/miSaludStore.js";
 import iconAdministracion from "../../../assets/images/administracion.png";
+import {modalMessage} from "../../../helpers/modal-alert/modalAlert.js";
 export default function CardSearch() {
   const navigate = useNavigate();
   const setCardTitle = useMiSaludStore((state) => state.setCardTitle);
@@ -17,12 +18,11 @@ export default function CardSearch() {
   const onSubmit = async (data) => {
     try {
       const response = await fetch("http://localhost:5256/api/Patient/GetPatientByCedula/" + data.cc);
-      const result = await response.json();
+      
       if (!response.ok) {
-        alert("Alerta: "+result.message);
+        modalMessage("¡Paciente no encontrado!");
         return;
       } 
-      console.log("Paciente encontrado:", result.data);
       navigate(`/InfoPatient/${data.cc}`);
     }catch (errors) {
       console.error("Error fetching data:", errors.message);

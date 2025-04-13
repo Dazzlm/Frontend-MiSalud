@@ -7,7 +7,7 @@ import ButtonGroup from "./button-group/ButtonGroup";
 import iconAdministracion from "../../assets/images/administracion.png";
 import CircularProgress from '@mui/material/CircularProgress';
 import getPatientByCC  from "../../helpers/getPatientByCC.js";
-import Swal from "sweetalert2";
+import {modalMessage} from "../../helpers/modal-alert/modalAlert.js";
 
 export default function InfoPatient() {
     const [patient, setPatient] = useState(undefined);
@@ -24,16 +24,7 @@ export default function InfoPatient() {
         }
 
         if (data === null) {
-            Swal.fire({
-                text: 'Paciente no encontrado!',
-                confirmButtonText: '✔',
-                confirmButtonColor: '#28BBC9',
-                customClass: {
-                    text: styles["swal__text"],
-                    popup: styles["swal__style"],
-                    confirmButton: styles['button__confirmar'],
-                }
-            });
+            modalMessage("¡Paciente no encontrado!");
             setPatient(undefined);
             navigate("/ManageAgenda");
         }
