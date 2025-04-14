@@ -49,7 +49,7 @@ export default function InfoPatient() {
     return (
       <div className={styles["info__patient"]}>
         <DetailsPatient patient={patient} />
-        <ButtonGroup idPatient={patient.idPaciente} />
+        <ButtonGroup ccPatient={patient.cedula} />
       </div>
     );
   }

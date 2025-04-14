@@ -6,6 +6,7 @@ import CardGroupButton from "./components/cards/card-group-button/CardGroupButto
 import CreatePatient from "./components/Patiente";
 import CardSearch from "./components/cards/card-search/CardSearch";
 import InfoPatient from './components/info-patient/InfoPatient';
+import ScheduleAppointment from "./views/appointment/schedule-appointment/ScheduleAppointment";
 function App() {
   
   return (
@@ -17,6 +18,7 @@ function App() {
           <Route path="/ManageAgenda" element={<CardSearch/>} />
           <Route path="/CreatePatient" element={<CreatePatient/>}/>
           <Route path="/InfoPatient/:cc"  element={<InfoPatient/>}/>
+          <Route path="/ScheduleAppointment/:cc" element={<ScheduleAppointment/>} />
         </Route>
       </Routes>
     </BrowserRouter>
