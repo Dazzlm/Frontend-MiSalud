@@ -5,6 +5,7 @@ import { TextField } from "@mui/material";
 import { useForm } from "react-hook-form";
 import { useMiSaludStore } from "../../../zustand/miSaludStore.js";
 import iconAdministracion from "../../../assets/images/administracion.png";
+import {modalMessage} from "../../../helpers/modal-alert/modalAlert.js";
 export default function CardSearch() {
   const navigate = useNavigate();
   const setCardTitle = useMiSaludStore((state) => state.setCardTitle);
@@ -17,17 +18,16 @@ export default function CardSearch() {
   const onSubmit = async (data) => {
     try {
       const response = await fetch("http://localhost:5256/api/Patient/GetPatientByCedula/" + data.cc);
-      const result = await response.json();
+      
       if (!response.ok) {
-        alert("Alerta: "+result.message);
+        modalMessage("¡Paciente no encontrado!");
         return;
       } 
-      console.log("Paciente encontrado:", result.data);
       navigate(`/InfoPatient/${data.cc}`);
     }catch (errors) {
       console.error("Error fetching data:", errors.message);
+      modalMessage("¡Error al buscar el paciente! intente más tarde.");
     }
-
   }
 
   useEffect(() => {
@@ -49,24 +49,24 @@ export default function CardSearch() {
             sx={{
               width: "90%",
               '& .MuiInputBase-input': {
-                color: "#4D7B80", // texto del input
+                color: "#4D7B80",
                 fontFamily: "Raleway",
               },
               '& .MuiInputLabel-root': {
-                color: "#28BBC9", // label normal
+                color: "#28BBC9",
               },
               '& .MuiInputLabel-root.Mui-focused': {
-                color: "#28BBC9", // label cuando está enfocado
+                color: "#28BBC9", 
               },
               '& .MuiOutlinedInput-notchedOutline': {
-                borderColor: "#28BBC9", // borde normal
+                borderColor: "#28BBC9",
                 borderWidth: 2,
               },
               '& .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline': {
-                borderColor: "#28BBC9", // borde cuando enfocado
+                borderColor: "#28BBC9", 
               },
               '& .MuiOutlinedInput-root:hover .MuiOutlinedInput-notchedOutline': {
-                borderColor: "#4D7B80", // borde cuando pasa el mouse (hover)
+                borderColor: "#4D7B80", 
               },
             }}
             required

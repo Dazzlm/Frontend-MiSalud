@@ -1,3 +1,4 @@
+@import url("../../styles/default.module.css");
 
 .info__patient {
     width: 85%;
@@ -9,3 +10,6 @@
     margin: 0;
     padding: 0;
 }
+
+
+
