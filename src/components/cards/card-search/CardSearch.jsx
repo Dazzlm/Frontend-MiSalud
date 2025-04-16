@@ -26,8 +26,8 @@ export default function CardSearch() {
       navigate(`/InfoPatient/${data.cc}`);
     }catch (errors) {
       console.error("Error fetching data:", errors.message);
+      modalMessage("¡Error al buscar el paciente! intente más tarde.");
     }
-
   }
 
   useEffect(() => {
@@ -49,24 +49,24 @@ export default function CardSearch() {
             sx={{
               width: "90%",
               '& .MuiInputBase-input': {
-                color: "#4D7B80", // texto del input
+                color: "#4D7B80",
                 fontFamily: "Raleway",
               },
               '& .MuiInputLabel-root': {
-                color: "#28BBC9", // label normal
+                color: "#28BBC9",
               },
               '& .MuiInputLabel-root.Mui-focused': {
-                color: "#28BBC9", // label cuando está enfocado
+                color: "#28BBC9", 
               },
               '& .MuiOutlinedInput-notchedOutline': {
-                borderColor: "#28BBC9", // borde normal
+                borderColor: "#28BBC9",
                 borderWidth: 2,
               },
               '& .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline': {
-                borderColor: "#28BBC9", // borde cuando enfocado
+                borderColor: "#28BBC9", 
               },
               '& .MuiOutlinedInput-root:hover .MuiOutlinedInput-notchedOutline': {
-                borderColor: "#4D7B80", // borde cuando pasa el mouse (hover)
+                borderColor: "#4D7B80", 
               },
             }}
             required
