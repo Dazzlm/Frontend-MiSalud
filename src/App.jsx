@@ -7,6 +7,7 @@ import FormPatient from "./components/create-patient/FormPatient.jsx";
 import CardSearch from "./components/cards/card-search/CardSearch";
 import InfoPatient from './components/info-patient/InfoPatient';
 import ScheduleAppointment from "./views/appointment/schedule-appointment/ScheduleAppointment";
+import CreateNotification from "./components/Notifications/CreateNotification";
 function App() {
   
   return (
@@ -14,7 +15,7 @@ function App() {
       <Routes>
         <Route path="/" element={<MainLayout />}>
           <Route index element={<CardGroupButton />} />
-          <Route path="/CreateNotification" element={<p>Test New Notification</p>} />
+          <Route path="/CreateNotification" element={<CreateNotification/>} />
           <Route path="/ManageAgenda" element={<CardSearch/>} />
           <Route path="/CreatePatient" element={<FormPatient/>}/>
           <Route path="/InfoPatient/:cc"  element={<InfoPatient/>}/>
