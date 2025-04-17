@@ -1,9 +1,7 @@
 import { useState, useEffect } from "react";
-import NotificationIcon from "../icons/NotificationIcon";
 import "../../styles/notification.css";
 import administrationIcon from "../../assets/images/administracion.png";
 import { useMiSaludStore } from "../../zustand/miSaludStore.js";
-import Swal from "sweetalert2";
 import {modalMessage} from "../../helpers/modal-alert/modalAlert.js";
 
 const CreateNotification = () => {
@@ -19,14 +17,7 @@ const CreateNotification = () => {
     console.log(title, description, target);
   
     if (!target) {
-      Swal.fire({
-        icon: "warning",
-        title: "Selecciona un destinatario",
-        toast: true,
-        position: "top-end",
-        showConfirmButton: false,
-        timer: 3000,
-      });
+      modalMessage("ALERTA", "Por favor selecciona un destinatario", "");
       return;
     }
   
@@ -51,18 +42,14 @@ const CreateNotification = () => {
         throw new Error("Error en el servidor");
       }
   
-     modalMessage("Notificación enviada", "La notificación se ha enviado correctamente a los " + target , "success");
+     modalMessage("Notificación enviada", "La notificación se ha enviado correctamente a los " + target , "");
   
       setTitle("");
       setDescription("");
       setTarget("");
     } catch (error) {
       console.error(error);
-      Swal.fire({
-        icon: "error",
-        title: "Error al enviar la notificación",
-        text: error.message,
-      });
+      modalMessage("Error", "No se pudo enviar la notificación : " + error , "");
     } finally {
       setLoading(false);
     }
