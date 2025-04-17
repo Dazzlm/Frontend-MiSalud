@@ -47,7 +47,7 @@ export default function AppointmentDetails({ idAppointment }) {
       
           <div className={styles["appointment__container--description"]}>
             <p className={styles["appointment__content--item"]}>
-              <strong>Fecha:</strong>{' '}
+              <strong className={styles["content__item-strong"]}>Fecha:</strong>{' '}
               {new Date(appointmentDetails.fecha).toLocaleDateString('es-ES', {
                 day: 'numeric',
                 month: 'long',
@@ -55,7 +55,7 @@ export default function AppointmentDetails({ idAppointment }) {
               })}
             </p>
             <p className={styles["appointment__content--item"]}>
-              <strong>Hora:</strong>{' '}
+              <strong className={styles["content__item-strong"]}>Hora:</strong>{' '}
               {new Date(`1970-01-01T${appointmentDetails.horaInicio}`).toLocaleTimeString('es-ES', {
                 hour: 'numeric',
                 minute: '2-digit',
@@ -68,7 +68,7 @@ export default function AppointmentDetails({ idAppointment }) {
               }).replace(/\./g, '')}
             </p>
             <p className={styles["appointment__content--item"]}>
-              <strong>Lugar:</strong> {appointmentDetails.lugar}
+              <strong className={styles["content__item-strong"]}>Lugar:</strong> {appointmentDetails.lugar}
             </p>
           </div>
       
@@ -76,16 +76,16 @@ export default function AppointmentDetails({ idAppointment }) {
             <h2 className={styles["container__patient--title"]}>Información del Paciente</h2>
             <div className={styles["container__patient--content"]}>
               <p className={styles["appointment__content--item"]}>
-                <strong>Nombre:</strong> {appointmentDetails.paciente.nombreCompleto}
+                <strong className={styles["content__item-strong"]}>Nombre:</strong> {appointmentDetails.paciente.nombreCompleto}
               </p>
               <p className={styles["appointment__content--item"]}>
-                <strong>Cédula:</strong> {appointmentDetails.paciente.cedula}
+                <strong className={styles["content__item-strong"]} >Cédula:</strong> {appointmentDetails.paciente.cedula}
               </p>
               <p className={styles["appointment__content--item"]}>
-                <strong>Teléfono:</strong> {appointmentDetails.paciente.telefono}
+                <strong className={styles["content__item-strong"]} >Teléfono:</strong> {appointmentDetails.paciente.telefono}
               </p>
               <p className={styles["appointment__content--item"]}>
-                <strong>Correo:</strong> {appointmentDetails.paciente.correo}
+                <strong className={styles["content__item-strong"]} >Correo:</strong> {appointmentDetails.paciente.correo}
               </p>
             </div>
           </div>
@@ -94,13 +94,13 @@ export default function AppointmentDetails({ idAppointment }) {
             <h2 className={styles["container__doctor--title"]}>Información del Médico</h2>
             <div className={styles["container__doctor--content"]}>
               <p className={styles["appointment__content--item"]}>
-                <strong>Nombre:</strong> {appointmentDetails.doctor.nombreCompleto}
+                <strong className={styles["content__item-strong"]}>Nombre:</strong> {appointmentDetails.doctor.nombreCompleto}
               </p>
               <p className={styles["appointment__content--item"]}>
-                <strong>Correo:</strong> {appointmentDetails.doctor.correo}
+                <strong className={styles["content__item-strong"]}>Correo:</strong> {appointmentDetails.doctor.correo}
               </p>
               <p className={styles["appointment__content--item"]}>
-                <strong>Teléfono:</strong>{appointmentDetails.doctor.telefono}
+                <strong className={styles["content__item-strong"]} >Teléfono:</strong>{appointmentDetails.doctor.telefono}
               </p>
             </div>
           </div>

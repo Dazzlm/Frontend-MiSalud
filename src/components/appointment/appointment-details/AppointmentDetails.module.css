@@ -51,7 +51,7 @@
     color: var(--color-dark-teal);
 }
 
-strong{
+.content__item-strong{
     color: var(--color-cyan);
     font-size: 18px;
     font-weight: var(--font-bold);
