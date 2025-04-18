@@ -1,16 +1,16 @@
 import { useEffect, useState } from "react";
 import { useMiSaludStore } from "../../../zustand/miSaludStore.js";
 import scheduleIcon from "../../../assets/images/scheduleicon.png";
-import CardDetails from "../../../components/cards/card-appointment-detail/CardDetails.jsx";
+import CardDetails from "../../../components/cards/card-appointment-details/CardDetails.jsx";
 import CalendarPicker from "../../../components/calendar/CalendarPicket.jsx";
 import { handleScheduleFlow } from "../../../helpers/scheduleFlow.js";
-import styles from "./CreateAppointmen.module.css";
+import styles from "./CreateAppointment.module.css";
 import { useNavigate, useParams } from "react-router-dom";
 import CircularProgress from '@mui/material/CircularProgress';
 import getPatientByCC from "../../../helpers/getPatientByCC.js";
 import {modalMessage} from "../../..//helpers/modal-alert/modalAlert.js";
  
-export default function RecheduleAppointment() {
+export default function CreateAppointment() {
   const navigate = useNavigate();  
   const {cc} = useParams();
   const [currentPatient, setCurrentPatient] = useState(undefined);
@@ -26,7 +26,7 @@ export default function RecheduleAppointment() {
     fechaCita: "",
     horaCita: "",
     horaFinalizacion: "",
-    estado: "Cita agendada",
+    estado: "Programada",
     doctorName: "",
   });
  

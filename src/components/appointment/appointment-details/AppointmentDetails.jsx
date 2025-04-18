@@ -20,12 +20,11 @@ export default function AppointmentDetails({ idAppointment }) {
                 setAppointmentDetails(null);
                 return;
             }
-
-            
+          
             setAppointmentDetails(data);
         };
         fetchData();
-    }, [idAppointment,appointmentDetails]);
+    }, [idAppointment]);
 
     if (idAppointment === undefined) {
         return <div className={styles["appointment__details--empty"]}>Seleccione una cita para ver los detalles</div>;
@@ -48,7 +47,7 @@ export default function AppointmentDetails({ idAppointment }) {
           <div className={styles["appointment__container--description"]}>
             <p className={styles["appointment__content--item"]}>
               <strong className={styles["content__item-strong"]}>Fecha:</strong>{' '}
-              {new Date(appointmentDetails.fecha).toLocaleDateString('es-ES', {
+              {new Date(appointmentDetails.fecha + "T00:00:00").toLocaleDateString('es-ES', {
                 day: 'numeric',
                 month: 'long',
                 year: 'numeric'

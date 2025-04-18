@@ -103,7 +103,7 @@ export const handleScheduleFlow = async ({ date, appointmentInfo, setAppointment
   if (!confirm.isConfirmed) return;
 
   const cita = {
-    idCita: 0,
+    idCita: appointmentInfo.idCita,
     idPaciente: appointmentInfo.idPaciente,
     idDoctor: parseInt(selectedDoctorId),
     title: appointmentInfo.title,
@@ -114,16 +114,22 @@ export const handleScheduleFlow = async ({ date, appointmentInfo, setAppointment
     horaFinalizacion,
     estado: appointmentInfo.estado,
   };
-
   try {
-    const res = await fetch("http://localhost:5256/api/MedicalAppointment/AddMedicalAppointment", {
-      method: "POST",
+    // Determinar el endpoint y el método según el estado
+    const endpoint = cita.estado === "Reprogramada" 
+      ? "http://localhost:5256/api/MedicalAppointment/UpdateMedicalAppointment" 
+      : "http://localhost:5256/api/MedicalAppointment/AddMedicalAppointment";
+  
+    const method = cita.estado === "Reprogramada" ? "PUT" : "POST";
+  
+    const res = await fetch(endpoint, {
+      method: method, 
       headers: {
         "Content-Type": "application/json",
       },
       body: JSON.stringify(cita),
     });
-
+  
     if (res.ok) {
       modalMessage("¡Cita agendada!", "Tu cita fue registrada con éxito", "", "/");
     } else {
@@ -133,4 +139,4 @@ export const handleScheduleFlow = async ({ date, appointmentInfo, setAppointment
     console.error(err);
     modalMessage("Error", "No se pudo registrar la cita", "", "/");
   }
-};
+}  
