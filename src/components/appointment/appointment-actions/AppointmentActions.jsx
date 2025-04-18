@@ -35,7 +35,7 @@ export default function AppointmentActions({ idAppointment }) {
           return;
         }
     
-        navigate("/reschedule/" + idAppointment);
+        navigate("/Reschedule/" + idAppointment);
       };
 
     return (
