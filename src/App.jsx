@@ -1,4 +1,3 @@
-
 import './App.css'
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import MainLayout from "./views/menu/MainLayout";
@@ -8,9 +7,10 @@ import CardSearch from "./components/cards/card-search/CardSearch";
 import InfoPatient from './components/info-patient/InfoPatient';
 import ScheduleAppointment from "./views/appointment/schedule-appointment/ScheduleAppointment";
 import CreateNotification from "./components/Notifications/CreateNotification";
-import	CreateAppointmen from "./views/appointment/CreateAppointmen/CreateAppointment.jsx";
+import CreateAppointmen from "./views/appointment/CreateAppointmen/CreateAppointment.jsx";
+import Reschedule from "./views/reschedule/Reschedule.jsx"
 function App() {
- 
+  
   return (
     <BrowserRouter>
       <Routes>
@@ -22,6 +22,7 @@ function App() {
           <Route path="/CreatePatient" element={<FormPatient/>}/>
           <Route path="/InfoPatient/:cc"  element={<InfoPatient/>}/>
           <Route path="/ScheduleAppointment/:cc" element={<ScheduleAppointment/>} />
+          <Route path="/Reschedule/:idCita" element={<Reschedule/>} />
         </Route>
       </Routes>
     </BrowserRouter>

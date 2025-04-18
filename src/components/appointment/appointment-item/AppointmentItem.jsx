@@ -4,7 +4,7 @@ export default function AppointmentItem({ appointment, onSelect }) {
       
         onSelect(appointment.idCita);
     }
-const fechaCita = new Date(appointment.fechaCita);
+const fechaCita = new Date(appointment.fechaCita+ "T00:00:00");
 
 const dateformate = fechaCita.toLocaleDateString('es-ES', {
   day: 'numeric',
