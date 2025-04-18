@@ -8,8 +8,9 @@ import CardSearch from "./components/cards/card-search/CardSearch";
 import InfoPatient from './components/info-patient/InfoPatient';
 import ScheduleAppointment from "./views/appointment/schedule-appointment/ScheduleAppointment";
 import CreateNotification from "./components/Notifications/CreateNotification";
+import	CreateAppointmen from "./views/appointment/CreateAppointmen/CreateAppointment.jsx";
 function App() {
-  
+ 
   return (
     <BrowserRouter>
       <Routes>
@@ -17,6 +18,7 @@ function App() {
           <Route index element={<CardGroupButton />} />
           <Route path="/CreateNotification" element={<CreateNotification/>} />
           <Route path="/ManageAgenda" element={<CardSearch/>} />
+          <Route path="/CreateAppointment/:cc" element={<CreateAppointmen/>} />
           <Route path="/CreatePatient" element={<FormPatient/>}/>
           <Route path="/InfoPatient/:cc"  element={<InfoPatient/>}/>
           <Route path="/ScheduleAppointment/:cc" element={<ScheduleAppointment/>} />
