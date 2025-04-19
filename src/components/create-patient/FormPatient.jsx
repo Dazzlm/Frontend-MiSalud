@@ -1,14 +1,6 @@
 import { useEffect } from "react";
 import { useForm } from "react-hook-form";
-import {
-  TextField,
-  Button,
-  Typography,
-  Box,
-  Container,
-  Divider,
-  Grid,
-} from "@mui/material";
+import { TextField, Button, Typography, Box, Container, Divider, Grid } from "@mui/material";
 import { useMiSaludStore } from "../../zustand/miSaludStore.js";
 import iconPaciente from "../../assets/images/patienticon.png";
 import { modalMessage } from "../../helpers/modal-alert/modalAlert.js";
@@ -61,12 +53,12 @@ export default function FormPatient() {
       const result = await response.json();
 
       if (result.cedulaExiste) {
-        modalMessage("¡Cédula ya registrada!", "La cédula ya está registrada. Por favor, ingrese otra.", "error");
+        modalMessage("¡Cédula ya registrada!", "La cédula ya está registrada. Por favor, ingrese otra.", "");
         return;
       }
 
       if (result.correoExiste) {
-        modalMessage("¡Correo ya registrado!", "El correo ya está registrado. Por favor, ingrese otro.", "error");
+        modalMessage("¡Correo ya registrado!", "El correo ya está registrado. Por favor, ingrese otro.", "");
         return;
       }
 
@@ -79,17 +71,41 @@ export default function FormPatient() {
       });
 
       if (registerResponse.ok) {
-        modalMessage("Paciente creado con éxito", "El paciente se ha guardado correctamente.", "success");
+        modalMessage("Paciente creado con éxito", "El paciente se ha guardado correctamente.", "");
         navigate("/");
       } else {
         modalMessage("Error", "Error al guardar el paciente.", "error");
       }
     } catch (error) {
       console.error("Error en la petición:", error);
-      modalMessage("Error de conexión", "Ocurrió un error al conectar con el servidor.", "error");
+      modalMessage("Error de conexión", "Ocurrió un error al conectar con el servidor.", "");
     }
   };
-
+  
+const inputsDefault = {
+  width: "100%",
+  '& .MuiInputBase-input': {
+    color: "#4D7B80",
+    fontFamily: "Raleway",
+  },
+  '& .MuiInputLabel-root': {
+    color: "#28BBC9",
+  },
+  '& .MuiInputLabel-root.Mui-focused': {
+    color: "#28BBC9", 
+  },
+  '& .MuiOutlinedInput-notchedOutline': {
+    borderColor: "#28BBC9",
+    borderWidth: 2,
+  },
+  '& .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline': {
+    borderColor: "#28BBC9", 
+  },
+  '& .MuiOutlinedInput-root:hover .MuiOutlinedInput-notchedOutline': {
+    borderColor: "#4D7B80", 
+  },
+};
+  
   return (
     <Container 
       maxWidth="md" 
@@ -139,6 +155,7 @@ export default function FormPatient() {
                 <TextField
                   label="Nombre"
                   fullWidth
+                  sx={inputsDefault}
                   {...register("nombre", { required: "El nombre es obligatorio" })}
                   error={!!errors.nombre}
                   helperText={errors.nombre?.message}
@@ -148,6 +165,7 @@ export default function FormPatient() {
                 <TextField
                   label="Apellido"
                   fullWidth
+                  sx={inputsDefault}
                   {...register("apellido", { required: "El apellido es obligatorio" })}
                   error={!!errors.apellido}
                   helperText={errors.apellido?.message}
@@ -157,6 +175,7 @@ export default function FormPatient() {
                 <TextField
                   label="Cédula"
                   fullWidth
+                  sx={inputsDefault}
                   {...register("cedula", {
                     required: "La cédula es obligatoria",
                     pattern: {
@@ -172,6 +191,7 @@ export default function FormPatient() {
                 <TextField
                   label="Correo electrónico"
                   fullWidth
+                  sx={inputsDefault}
                   type="email"
                   {...register("correo", {
                     required: "El correo es obligatorio",
@@ -188,6 +208,7 @@ export default function FormPatient() {
                 <TextField
                   label="Dirección"
                   fullWidth
+                  sx={inputsDefault}
                   {...register("direccion", {
                     required: "La dirección es obligatoria",
                   })}
@@ -199,6 +220,7 @@ export default function FormPatient() {
                 <TextField
                   label="Teléfono"
                   fullWidth
+                  sx={inputsDefault}
                   {...register("telefono", {
                     required: "El teléfono es obligatorio",
                     pattern: {

@@ -75,8 +75,9 @@ const CreateNotification = () => {
     <div className="container-notification">
       <form className="notification-form" onSubmit={handleSubmit}>
         <div className="form-main">
-          <label htmlFor="titulo">Título</label>
+          <label className="label" htmlFor="titulo">Título</label>
           <input
+            className="input"
             id="titulo"
             type="text"
             placeholder="Título"
@@ -85,8 +86,9 @@ const CreateNotification = () => {
             required
           />
 
-          <label htmlFor="descripcion">Descripción</label>
+          <label className="label" htmlFor="descripcion">Descripción</label>
           <textarea
+            className="textarea"
             id="descripcion"
             placeholder="Descripción"
             value={description}
@@ -100,7 +102,7 @@ const CreateNotification = () => {
         </div>
 
         <div className="form-side">
-          <p>¿Quién recibe la notificación?</p>
+          <p className="message-who">¿Quién recibe la notificación?</p>
           <div className="role-buttons">
             {["Admin", "Medicos", "Pacientes"].map((role) => (
               <button
@@ -114,7 +116,7 @@ const CreateNotification = () => {
             ))}
           </div>
 
-          <p className="text-xs text-gray-500 mt-4">
+          <p  className="text-xs text-gray-500 mt-4">
             {description.length} / 250 caracteres
           </p>
 
