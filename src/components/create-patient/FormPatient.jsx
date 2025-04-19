@@ -81,49 +81,37 @@ export default function FormPatient() {
       modalMessage("Error de conexión", "Ocurrió un error al conectar con el servidor.", "");
     }
   };
-  
-const inputsDefault = {
-  width: "100%",
-  '& .MuiInputBase-input': {
-    color: "#4D7B80",
-    fontFamily: "Raleway",
-  },
-  '& .MuiInputLabel-root': {
-    color: "#28BBC9",
-  },
-  '& .MuiInputLabel-root.Mui-focused': {
-    color: "#28BBC9", 
-  },
-  '& .MuiOutlinedInput-notchedOutline': {
-    borderColor: "#28BBC9",
-    borderWidth: 2,
-  },
-  '& .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline': {
-    borderColor: "#28BBC9", 
-  },
-  '& .MuiOutlinedInput-root:hover .MuiOutlinedInput-notchedOutline': {
-    borderColor: "#4D7B80", 
-  },
-};
-  
+
+  const inputsDefault = {
+    width: "100%",
+    '& .MuiInputBase-input': {
+      color: "#4D7B80",
+      fontFamily: "Raleway",
+    },
+    '& .MuiInputLabel-root': {
+      color: "#28BBC9",
+    },
+    '& .MuiInputLabel-root.Mui-focused': {
+      color: "#28BBC9", 
+    },
+    '& .MuiOutlinedInput-notchedOutline': {
+      borderColor: "#28BBC9",
+      borderWidth: 2,
+    },
+    '& .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline': {
+      borderColor: "#28BBC9", 
+    },
+    '& .MuiOutlinedInput-root:hover .MuiOutlinedInput-notchedOutline': {
+      borderColor: "#4D7B80", 
+    },
+  };
+
   return (
     <Container 
       maxWidth="md" 
-      sx={{ 
-        mt: 5,
-        display: 'flex',
-        justifyContent: 'center',
-      }}
+      sx={{ mt: 5, display: 'flex', justifyContent: 'center' }}
     >
-      <Box
-        sx={{
-          width: "100%",
-          maxWidth: "650px",
-          mx: "auto",
-          px: 2,
-          py: 4,
-        }}
-      >
+      <Box sx={{ width: "100%", maxWidth: "650px", mx: "auto", px: 2, py: 4 }}>
         <Typography
           variant="h5"
           sx={{
@@ -139,19 +127,16 @@ const inputsDefault = {
         <Divider sx={{ mb: 4 }} />
 
         <form onSubmit={handleSubmit(onSubmit)} noValidate>
-          <Box 
-            sx={{ 
-              display: 'flex', 
-              flexDirection: 'column', 
-              alignItems: 'center' 
-            }}
-          >
-            <Grid 
-              container 
-              spacing={3} 
-              justifyContent="center"
+          <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+            <Box
+              sx={{
+                display: "grid",
+                gridTemplateColumns: { xs: "1fr", sm: "1fr 1fr" },
+                gap: 3,
+                width: "100%",
+              }}
             >
-              <Grid item xs={12} sm={6}>
+              <Box sx={{ gridColumn: "span 1" }}>
                 <TextField
                   label="Nombre"
                   fullWidth
@@ -160,8 +145,9 @@ const inputsDefault = {
                   error={!!errors.nombre}
                   helperText={errors.nombre?.message}
                 />
-              </Grid>
-              <Grid item xs={12} sm={6}>
+              </Box>
+
+              <Box sx={{ gridColumn: "span 1" }}>
                 <TextField
                   label="Apellido"
                   fullWidth
@@ -170,8 +156,9 @@ const inputsDefault = {
                   error={!!errors.apellido}
                   helperText={errors.apellido?.message}
                 />
-              </Grid>
-              <Grid item xs={12} sm={6}>
+              </Box>
+
+              <Box sx={{ gridColumn: "span 1" }}>
                 <TextField
                   label="Cédula"
                   fullWidth
@@ -186,8 +173,9 @@ const inputsDefault = {
                   error={!!errors.cedula}
                   helperText={errors.cedula?.message}
                 />
-              </Grid>
-              <Grid item xs={12} sm={6}>
+              </Box>
+
+              <Box sx={{ gridColumn: "span 1" }}>
                 <TextField
                   label="Correo electrónico"
                   fullWidth
@@ -203,8 +191,9 @@ const inputsDefault = {
                   error={!!errors.correo}
                   helperText={errors.correo?.message}
                 />
-              </Grid>
-              <Grid item xs={12} sm={6}>
+              </Box>
+
+              <Box sx={{ gridColumn: "span 1" }}>
                 <TextField
                   label="Dirección"
                   fullWidth
@@ -215,8 +204,9 @@ const inputsDefault = {
                   error={!!errors.direccion}
                   helperText={errors.direccion?.message}
                 />
-              </Grid>
-              <Grid item xs={12} sm={6}>
+              </Box>
+
+              <Box sx={{ gridColumn: "span 1" }}>
                 <TextField
                   label="Teléfono"
                   fullWidth
@@ -231,8 +221,8 @@ const inputsDefault = {
                   error={!!errors.telefono}
                   helperText={errors.telefono?.message}
                 />
-              </Grid>
-            </Grid>
+              </Box>
+            </Box>
 
             <Box mt={4}>
               <Button
