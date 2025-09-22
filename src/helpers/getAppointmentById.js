@@ -1,6 +1,6 @@
 export default async function getAppointmentById(id) {
     try {
-        const response = await fetch("http://localhost:5256/api/MedicalAppointment/GetMedicalAppointmentById/" + id);
+        const response = await fetch("https://misalud.runasp.net/api/MedicalAppointment/GetMedicalAppointmentById/" + id);
         const result = await response.json();
 
         if (!response.ok) {

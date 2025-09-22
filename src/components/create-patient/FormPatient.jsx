@@ -44,7 +44,7 @@ export default function FormPatient() {
 
     try {
       const response = await fetch(
-        `http://localhost:5256/api/Patient/ExistsByCedulaOrCorreo?cedula=${data.cedula}&correo=${data.correo}`,
+        `https://misalud.runasp.net/api/Patient/ExistsByCedulaOrCorreo?cedula=${data.cedula}&correo=${data.correo}`,
         {
           method: "GET",
         }
@@ -62,7 +62,7 @@ export default function FormPatient() {
         return;
       }
 
-      const registerResponse = await fetch("http://localhost:5256/api/Patient/AddPatient", {
+      const registerResponse = await fetch("https://misalud.runasp.net/api/Patient/AddPatient", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

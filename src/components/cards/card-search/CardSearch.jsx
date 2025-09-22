@@ -17,7 +17,7 @@ export default function CardSearch() {
 
   const onSubmit = async (data) => {
     try {
-      const response = await fetch("http://localhost:5256/api/Patient/GetPatientByCedula/" + data.cc);
+      const response = await fetch("https://misalud.runasp.net/api/Patient/GetPatientByCedula/" + data.cc);
       
       if (!response.ok) {
         modalMessage("¡Paciente no encontrado!");

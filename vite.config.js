@@ -7,7 +7,7 @@ export default defineConfig({
     port: 5173,
     proxy: {
       '/api': {
-        target: 'http://localhost:5256',
+        target: 'https://misalud.runasp.net',
         changeOrigin: true,
         rewrite: (path) => path.replace(/^\/api/, '')
       }

@@ -18,11 +18,11 @@ export const handleScheduleFlow = async ({ date, appointmentInfo, setAppointment
     fechaCita: formattedDate,
   }));
 
-  const appointmentRes = await fetch(`http://localhost:5256/api/MedicalAppointment/GetMedicalAppointmentByDate/${formattedDate}`);
+  const appointmentRes = await fetch(`https://misalud.runasp.net/api/MedicalAppointment/GetMedicalAppointmentByDate/${formattedDate}`);
   const appointmentData = await appointmentRes.json();
   const appointments = appointmentData.data || [];
 
-  const doctorRes = await fetch("http://localhost:5256/api/Doctor/GetDoctors");
+  const doctorRes = await fetch("https://misalud.runasp.net/api/Doctor/GetDoctors");
   const doctorData = await doctorRes.json();
   const allDoctors = doctorData.data || [];
 
@@ -117,9 +117,9 @@ export const handleScheduleFlow = async ({ date, appointmentInfo, setAppointment
   try {
     // Determinar el endpoint y el método según el estado
     const endpoint = cita.estado === "Reprogramada" 
-      ? "http://localhost:5256/api/MedicalAppointment/UpdateMedicalAppointment" 
-      : "http://localhost:5256/api/MedicalAppointment/AddMedicalAppointment";
-  
+      ? "https://misalud.runasp.net/api/MedicalAppointment/UpdateMedicalAppointment" 
+      : "https://misalud.runasp.net/api/MedicalAppointment/AddMedicalAppointment";
+
     const method = cita.estado === "Reprogramada" ? "PUT" : "POST";
   
     const res = await fetch(endpoint, {

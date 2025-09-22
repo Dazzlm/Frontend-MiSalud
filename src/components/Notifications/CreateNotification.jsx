@@ -31,7 +31,7 @@ const CreateNotification = () => {
   
     const endpoint = endpointMap[target];
   
-    const url = `http://localhost:5256/api/Notification/${endpoint}?subject=${encodeURIComponent(title)}&body=${encodeURIComponent(description)}`;
+    const url = `https://misalud.runasp.net/api/Notification/${endpoint}?subject=${encodeURIComponent(title)}&body=${encodeURIComponent(description)}`;
 
   try {
     const response = await fetch(url, {
